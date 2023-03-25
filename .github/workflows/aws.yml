@@ -37,9 +37,8 @@ jobs:
     permissions:
       id-token: write
       contents: read
-      pull-requests: write
     uses: obrienalaribe/nodes/.github/workflows/aws.yml@main
     with:
-      config-path: .github/labeler.yml
+      config-path: test
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      token: test
