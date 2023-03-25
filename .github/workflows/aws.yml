@@ -1,0 +1,34 @@
+name: Deploy to Amazon ECS
+
+on:
+  push:
+    branches: [ "main" ]
+  
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1                  
+
+permissions:
+  id-token: write
+  contents: read
+  
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::914509617440:role/iams-ci-global
+        role-session-name: githubactionssession
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Test
+      run: aws s3 ls
