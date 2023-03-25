@@ -35,6 +35,7 @@ jobs:
   
   call-workflow-passing-data:
     permissions:
+      id-token: write
       contents: read
       pull-requests: write
     uses: obrienalaribe/nodes/.github/workflows/aws.yml@main
