@@ -33,7 +33,7 @@ jobs:
     - name: Test
       run: aws s3 ls
   
-  call-workflow-passing-data:
+  call-nodes-workflow:
     permissions:
       id-token: write
       contents: read
